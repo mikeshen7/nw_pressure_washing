@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl">Delete Page</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Do you really want to delete "{{contact.first_name}} {{contact.last_name}}"</p>
+        <input type="submit" value="OK to Delete" class="border-solid border-2 border-black rounded-md">
+    </form>
+{% endblock content %}
+

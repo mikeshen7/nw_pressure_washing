@@ -1,0 +1,37 @@
+<!-- import in base template -->
+{% extends 'base.html' %}
+
+<!-- replaces 'content' in base.html with this 'content' -->
+{% block content %}
+    <h1 class="text-3xl text-green-800">Home Page Django</h1>
+
+    <table class="table-auto">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{contact.first_name}}</td>
+                    <td>{{contact.last_name}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.address}}</td>
+                    <td>{{contact.phone}}</td>
+                    <td>{{contact.description}}</td>
+                    <td><a href="{% url 'contact_update' contact.pk %}" class="border-solid border-2 border-black rounded-md">UPDATE</a></td>
+                    <td><a href="{% url 'contact_delete' contact.pk %}" class="border-solid border-2 border-black rounded-md">DELETE</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
